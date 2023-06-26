@@ -5,20 +5,20 @@ def process_image():
     file = []
     unknown_image = []
     unknown_face_encoding = []
-    path = "./static/unknown/"
-    new_path = "./known/"
+    unknown_path = "./static/unknown/"
+    known_path = "./known/"
 
-    for x in os.listdir(path):
+    for x in os.listdir(unknown_path):
         file.append(x)
     count = len(file)
 
     known_name=[]
-    for x in os.listdir(new_path):
+    for x in os.listdir(known_path):
         known_name.append(x)
     print(known_name)
-    obama_image = face_recognition.load_image_file(new_path + known_name[0])
+    obama_image = face_recognition.load_image_file(known_path + known_name[0])
     for i in file:
-        unknown_image.append(face_recognition.load_image_file(path + i))
+        unknown_image.append(face_recognition.load_image_file(unknown_path + i))
 
     obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
     for i in unknown_image:

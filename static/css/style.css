@@ -1,0 +1,13 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 300px;
+    height: auto;
+    padding: 1px;
+}

@@ -33,7 +33,7 @@ def process_image():
 
     matching_images = []
     for encoding, filename in zip(unknown_face_encoding, file):
-        results = face_recognition.compare_faces(known_faces, encoding, tolerance=0.7)
+        results = face_recognition.compare_faces(known_faces, encoding, tolerance=0.8)
         if results[0]:
             matching_images.append(filename)
     

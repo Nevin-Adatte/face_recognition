@@ -6,3 +6,10 @@ This is a simple flask app that used to face detection. Along with it login and 
 ```
 python app.py
 ```
+
+### To initialize the database
+```
+flask --app app shell
+from app import db
+db.create_all()
+```

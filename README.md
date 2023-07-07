@@ -13,3 +13,5 @@ flask --app app shell
 from app import db
 db.create_all()
 ```
+
+Framework used Flask

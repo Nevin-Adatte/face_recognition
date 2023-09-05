@@ -4,7 +4,7 @@ import datetime, time
 import os, sys
 import numpy as np
 from threading import Thread
-from recognition import process_image
+from recognition import FaceRecognition
 
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
@@ -105,8 +105,8 @@ def gen_frames():  # generate frame by frame from camera
     while True:
         success, frame = camera.read() 
         if success:
-            if(face):                
-                frame= detect_face(frame)
+            # if(face):                
+            #     frame= detect_face(frame)
             # if(grey):
             #     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             # if(neg):
@@ -148,11 +148,18 @@ def video_feed():
 
 @app.route('/requests',methods=['POST','GET'])
 def tasks():
-    global switch,camera
+    global switch,camera,facecall,face
     if request.method == 'POST':
         if request.form.get('click') == 'Capture':
             global capture
             capture=1
+            time.sleep(2)           
+            images = []      
+            facecall = FaceRecognition()
+            for image in os.listdir('static/unknown'):
+                if facecall.run_recognition(f'static/unknown/{image}'):
+                    images.append(image)
+            return render_template('images.html',images=images)  
         # elif  request.form.get('grey') == 'Grey':
         #     global grey
         #     grey=not grey
@@ -160,7 +167,7 @@ def tasks():
         #     global neg
         #     neg=not neg
         elif  request.form.get('face') == 'Face Only':
-            global face
+            #global face
             face=not face 
             if(face):
                 time.sleep(4)   
@@ -186,9 +193,6 @@ def tasks():
         #         thread.start()
         #     elif(rec==False):
         #         out.release()
-        time.sleep(2)           
-        images = process_image()    
-        return render_template('images.html',images=images)  
     elif request.method=='GET':
         return render_template('index.html')
     return render_template('index.html')
@@ -220,7 +224,7 @@ def signup():
         new_user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
-        return 'new user has been created bro!'
+        return 'New user has been created bro!'
 
     return render_template('signup.html', form=form)
 

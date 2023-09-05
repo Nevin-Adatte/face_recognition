@@ -4,48 +4,75 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Upload Example</title>
+    <title>Upload</title>
     <style>
-      body {
-          font-family: Arial, sans-serif;
-      }
+    body {
+        font-family: Arial, sans-serif;
+    }
 
-      .center {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-      }
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 
-      form {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-      }
+    .left {
+        align-items: start;
+    }
 
-      input[type="file"] {
-          padding: 10px;
-          margin-bottom: 10px;
-      }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-      button {
-          padding: 10px 20px;
-          background-color: #4CAF50;
-          color: white;
-          border: none;
-          cursor: pointer;
-      }
+    input[type="file"] {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
 
-      button:hover {
-          background-color: #45a049;
-      }
+    button {
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .submit {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+    }
+
+    .logout {
+        padding: 10px 10px;
+        background-color: #414941;
+    }
+
+    .submit:hover {
+        background-color: #45a049;
+    }
+
+    .logout:hover {
+        background-color: #c7c7c7;
+        border: 1px solid #414941;
+        color: black;
+    }
+
+    .file-input {
+    font-size: 16px;
+    padding: 5px;
+    }
+
   </style>
 </head>
 <body>
+    <form action="/logout" class="left">
+        <button class="logout">Logout</button>
+    </form>
     <div class="center">
         <form method="POST" action="/upload" enctype="multipart/form-data">
-            <input type="file" name="file">
-            <button>Submit</button>
+            <input class="file-input" type="file" name="file" multiple>
+            <button class="submit">Submit</button>
         </form>
     </div>
 </body>

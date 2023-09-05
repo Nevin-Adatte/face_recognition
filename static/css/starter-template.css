@@ -1,10 +1,11 @@
 body {
-  padding-top: 50px;
+  padding-top: 40px;
 }
 .starter-template {
   padding: 40px 15px;
   text-align: center;
 }
 img{
-  padding: 20px;
+  /* padding: 20px; */
+  margin-top: 20px;
 }

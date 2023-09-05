@@ -1,13 +1,53 @@
-.row {
+body {
     display: flex;
-    flex-wrap: wrap;
-    padding: 0 4px;
+    justify-content: left;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
 }
 
-img {
-    margin-top: 8px;
-    vertical-align: middle;
-    width: 40%;
-    height: 30%;
-    padding: 1px;
+.row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.image-card {
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+}
+
+.image-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.download-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #3498db;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.download-button:hover {
+    text-decoration: none;
+    background-color: #10517c;
+    color: white;
 }
